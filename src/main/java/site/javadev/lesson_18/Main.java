@@ -1,7 +1,6 @@
-package site.javadev;
+package site.javadev.lesson_18;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import site.javadev.lesson_18.RadioPlayer;
 
 public class Main {
 
