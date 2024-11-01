@@ -1,14 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:util="http://www.springframework.org/schema/util"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-                           http://www.springframework.org/schema/beans/spring-beans.xsd">
+                           http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/context
+                           https://www.springframework.org/schema/context/spring-context.xsd
+                           http://www.springframework.org/schema/util
+                           https://www.springframework.org/schema/util/spring-util.xsd">
 
-    <!-- Определение бина -->
-<!--    <bean id="myBean" class="com.example.MyClass">-->
-<!--        <property name="property1" value="Value1"/>-->
-<!--        <property name="property2" ref="anotherBean"/>-->
-<!--    </bean>-->
+    <context:property-placeholder location="player.properties"/>
+
+    <!-- Определение бина RadioPlayer с передачей списка радиостанций -->
+    <bean id="player"
+          class="site.javadev.lesson_18.RadioPlayer"
+          scope="prototype"
+          init-method="onStart"
+          destroy-method="onFinish">
+        <constructor-arg>
+            <util:list>
+                <ref bean="maximum"/>
+                <ref bean="retro"/>
+                <ref bean="russianRadio"/>
+            </util:list>
+        </constructor-arg>
+        <constructor-arg value="${radioPlayer.name}"/>
+        <constructor-arg value="${radioPlayer.volume}"/>
+    </bean>
+
+    <!-- Определение радиостанций -->
+    <bean id="maximum" class="site.javadev.lesson_18.MaximumFM"/>
+    <bean id="retro" class="site.javadev.lesson_18.RetroFM"/>
+    <bean id="russianRadio" class="site.javadev.lesson_18.RussianRadio"/>
+
+
+
+    <!-- lesson_17   -->
     <bean id="catBean" class="site.javadev.lesson_17.Cat">
         <constructor-arg value="Мурка"/>
         <constructor-arg value="3"/>
