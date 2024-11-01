@@ -54,7 +54,7 @@
 <!--    &lt;!&ndash; Определение радиостанций &ndash;&gt;-->
 <!--    <bean id="maximum" class="site.javadev.lesson_18.MaximumFM"/>-->
 <!--    <bean id="retro" class="site.javadev.lesson_18.RetroFM"/>-->
-<!--    <bean id="russianRadio" class="site.javadev.lesson_18.RussianRadio"/>-->
+
 
 
 
