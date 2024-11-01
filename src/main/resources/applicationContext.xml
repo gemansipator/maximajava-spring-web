@@ -2,90 +2,14 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans
-                           http://www.springframework.org/schema/beans/spring-beans.xsd
-                           http://www.springframework.org/schema/context
-                           https://www.springframework.org/schema/context/spring-context.xsd
-                           ">
+       xsi:schemaLocation="
+           http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/context
+           https://www.springframework.org/schema/context/spring-context.xsd">
 
-    <context:property-placeholder location="player.properties"/>
+    <context:annotation-config />
+    <context:component-scan base-package="site.javadev.lesson_19" />
+    <context:property-placeholder location="classpath:player.properties"/> <!-- Укажите правильный путь к вашему файлу свойств -->
 
-    <!-- 19 lesson -->
-    <bean id="player"
-          class="site.javadev.lesson_19.RadioPlayer"
-          scope="prototype"
-          init-method="onStart"
-          destroy-method="onFinish"
-    >
-
-        <property name="radio" ref="maximum"/>
-        <property name="name" value="${radioPlayer.name}"/>
-        <property name="volume" value="${radioPlayer.volume}"/>
-    </bean>
-
-    <bean id="maximum" class="site.javadev.lesson_19.MaximumFM">
-    </bean>
-
-    <bean id="retro" class="site.javadev.lesson_19.RetroFM">
-    </bean>
-
-
-
-
-
-    <!--    &lt;!&ndash; 18 lesson &ndash;&gt;-->
-<!--    &lt;!&ndash; Определение бина RadioPlayer с передачей списка радиостанций &ndash;&gt;-->
-<!--    <bean id="player"-->
-<!--          class="site.javadev.lesson_18.RadioPlayer"-->
-<!--          scope="prototype"-->
-<!--          init-method="onStart"-->
-<!--          destroy-method="onFinish">-->
-<!--        <constructor-arg>-->
-<!--            <util:list>-->
-<!--                <ref bean="maximum"/>-->
-<!--                <ref bean="retro"/>-->
-<!--                <ref bean="russianRadio"/>-->
-<!--            </util:list>-->
-<!--        </constructor-arg>-->
-<!--        <constructor-arg value="${radioPlayer.name}"/>-->
-<!--        <constructor-arg value="${radioPlayer.volume}"/>-->
-<!--    </bean>-->
-
-<!--    &lt;!&ndash; Определение радиостанций &ndash;&gt;-->
-<!--    <bean id="maximum" class="site.javadev.lesson_18.MaximumFM"/>-->
-<!--    <bean id="retro" class="site.javadev.lesson_18.RetroFM"/>-->
-
-
-
-
-<!--    &lt;!&ndash; lesson_17   &ndash;&gt;-->
-<!--    <bean id="catBean" class="site.javadev.lesson_17.Cat">-->
-<!--        <constructor-arg value="Мурка"/>-->
-<!--        <constructor-arg value="3"/>-->
-<!--    </bean>-->
-
-<!--    <bean id="dogBean" class="site.javadev.lesson_17.Dog">-->
-<!--        <constructor-arg value="Шарик"/>-->
-<!--        <constructor-arg value="5"/>-->
-<!--    </bean>-->
-
-<!--    <bean id="tigerBean" class="site.javadev.lesson_17.Tiger">-->
-<!--        <constructor-arg value="Тигр"/>-->
-<!--        <constructor-arg value="4"/>-->
-<!--    </bean>-->
-
-<!--    <bean id="duckBean" class="site.javadev.lesson_17.Duck">-->
-<!--        <constructor-arg value="Утка"/>-->
-<!--        <constructor-arg value="2"/>-->
-<!--    </bean>-->
-<!--    <bean id="zooBean" class="site.javadev.lesson_17.Zoo">-->
-<!--        <constructor-arg ref="catBean"/>-->
-<!--        <constructor-arg ref="dogBean"/>-->
-<!--        <constructor-arg ref="tigerBean"/>-->
-<!--        <constructor-arg ref="duckBean"/>-->
-<!--    </bean>-->
-<!--&lt;!&ndash;    <bean id="anotherBean" class="com.example.AnotherClass">&ndash;&gt;-->
-<!--&lt;!&ndash;        <property name="someProperty" value="SomeValue"/>&ndash;&gt;-->
-<!--&lt;!&ndash;    </bean>&ndash;&gt;-->
 </beans>
-
