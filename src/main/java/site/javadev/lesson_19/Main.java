@@ -12,10 +12,6 @@ public class Main {
         RadioPlayer player1 = context.getBean("player", RadioPlayer.class);
         player1.play();
 
-        // Проверка на prototype scope: player1 и player2 должны быть разными объектами
-        RadioPlayer player2 = context.getBean("player", RadioPlayer.class);
-        System.out.println(player1 == player2); // Должно вывести false
-
         context.close();
     }
 }
